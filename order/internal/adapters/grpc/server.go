@@ -42,7 +42,6 @@ func (a Adapter) Create(ctx context.Context, request *order.CreateOrderRequest) 
 	result, err := a.api.PlaceOrder(newOrder)
 	code := status.Code(err)
 
-	// Trata erro de parâmetro inválido (ex.: mais de 50 itens)
 	if code == codes.InvalidArgument {
 		return nil, err
 	} else if err != nil {
